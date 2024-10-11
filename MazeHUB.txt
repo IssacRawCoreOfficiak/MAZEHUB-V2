@@ -1,0 +1,142 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "The Maze Exploits", HidePremium = false, SaveConfig = true, ConfigFolder = "MazeExploits"})
+
+local Tab1 = Window:MakeTab({
+Name = "Main",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+Tab1:AddSection({
+Name = "Stamina"
+})
+
+Tab1:AddButton({
+Name = "Infinite Stamina",
+Callback = function()
+game.Players.LocalPlayer.Character.Stamina.Value = math.huge
+end
+})
+
+Tab1:AddSection({
+Name = "Player Boost"
+})
+
+Tab1:AddButton({
+Name = "Speed Boost",
+Callback = function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+end
+})
+
+Tab1:AddSection({
+Name = "Noclip"
+})
+
+Tab1:AddButton({
+Name = "No Clip",
+Callback = function()
+local noclip = false
+game:GetService('RunService').Stepped:connect(function()
+if noclip then
+game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+end
+end)
+noclip = not noclip
+end
+})
+
+Tab1:AddSection({
+Name = "Fullbright"
+})
+
+Tab1:AddButton({
+Name = "Full Bright",
+Callback = function()
+game:GetService("Lighting").Brightness = 2
+game:GetService("Lighting").ClockTime = 14
+game:GetService("Lighting").FogEnd = 100000
+game:GetService("Lighting").GlobalShadows = false
+game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+end
+})
+
+local musicId = ""
+
+Tab1:AddSection({
+Name = "MUSIC SECTION"
+})
+
+Tab1:AddTextbox({
+Name = "Music ID",
+Default = "",
+TextDisappear = true,
+Callback = function(value)
+musicId = value
+end
+})
+
+Tab1:AddButton({
+Name = "Play Music",
+Callback = function()
+local sound = Instance.new("Sound", game.Players.LocalPlayer.Character)
+sound.SoundId = "rbxassetid://" .. musicId
+sound:Play()
+end
+})
+
+local Tab2 = Window:MakeTab({
+Name = "Visuals",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+Tab1:AddSection({
+Name = "ESP"
+})
+
+Tab2:AddButton({
+Name = "ESP Monsters",
+Callback = function()
+for _, v in pairs(game.Workspace:GetDescendants()) do
+if v:IsA("Model") and v:FindFirstChild("Humanoid") and v.Name == "Monster" then
+local espBox = Instance.new("BoxHandleAdornment")
+espBox.Size = v:GetExtentsSize()
+espBox.Adornee = v
+espBox.Color3 = Color3.new(1, 0, 0)
+espBox.AlwaysOnTop = true
+espBox.ZIndex = 10
+espBox.Transparency = 0.5
+espBox.Parent = v
+end
+end
+end
+})
+
+Tab2:AddButton({
+Name = "ESP Items",
+Callback = function()
+for _, v in pairs(game.Workspace:GetDescendants()) do
+if v:IsA("Tool") or v:IsA("Part") and v.Name == "Item" then
+local espBox = Instance.new("BoxHandleAdornment")
+espBox.Size = v.Size
+espBox.Adornee = v
+espBox.Color3 = Color3.new(0, 1, 0)
+espBox.AlwaysOnTop = true
+espBox.ZIndex = 10
+espBox.Transparency = 0.5
+espBox.Parent = v
+end
+end
+end
+})
+
+local Tab3 = Window:MakeTab({
+Name = "Credits",
+Icon = "rbxassetid://4483345998",
+PremiumOnly = false
+})
+
+Tab3:AddParagraph("Créditos", "Made By HumanGPT, MrMeow, IssacRawCore, Zythronis")
+
+OrionLib:Init()
