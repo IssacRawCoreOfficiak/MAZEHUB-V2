@@ -1,0 +1,5 @@
+this script has a 
+FULLBRIGHT - lights up the game
+Esp - You See The Players Monsters And Items 
+SpeedBost - Increase your velocity
+Music ID - You Play Some Music With ID But Only Works For You
