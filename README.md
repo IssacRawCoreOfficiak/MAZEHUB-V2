@@ -9,3 +9,6 @@ Pastebin Version
 loadstring(game:HttpGet("https://pastebin.com/raw/59NuUTbW"))()
 ```
 ScriptBlox Version:
+```lua
+loadstring(game:HttpGet("https://rawscripts.net/raw/The-Maze-Hub-V2"))() 
+```
